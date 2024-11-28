@@ -170,8 +170,8 @@ pipe = MimicBrushPipeline.from_pretrained(
 
 # pipe.unet.load_lora_weights("./ft_lora/checkpoint-5000", adapter_name="lora")
 # pipe.set_adapters(["lora"], adapter_weights=[1])
-
-pipe.unet.load_attn_procs("./ft_lora/qkvo_can/checkpoint-10000")
+LORA_DIR = "./ft_lora/qkvo_can/checkpoint-10000"
+pipe.unet.load_attn_procs(LORA_DIR)
 
 depth_guider = DepthGuider()
 referencenet = ReferenceNet.from_pretrained(ref_model_path, subfolder="unet").to(dtype=torch.float16)
